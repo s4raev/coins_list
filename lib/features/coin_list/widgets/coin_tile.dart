@@ -26,7 +26,7 @@ class CoinTile extends StatelessWidget {
         style: theme.textTheme.bodyMedium,
       ),
       subtitle: Text(
-        '${coin.priceUSD.toStringAsFixed(2)} USD\n${coin.priceRUB.toStringAsFixed(1)} RUB',
+        '${coin.priceUSD.toStringAsFixed(2)} USD\n${coin.priceRUB.round()} RUB',
         style: theme.textTheme.labelSmall,
       ),
       trailing: const Icon(Icons.arrow_forward_ios),
