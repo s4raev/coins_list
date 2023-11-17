@@ -32,15 +32,18 @@ class _CoinListScreenState extends State<CoinListScreen> {
       appBar: AppBar(
         title: const Text('MyApp'),
       ),
-      body: (_coinsList == null)
-      ? const Center(child: CircularProgressIndicator())
-      : ListView.separated(
-        itemCount: _coinsList!.length,
-        separatorBuilder: (context, index) => const Divider(),
-        itemBuilder: (context, i) {
-          final coin = _coinsList![i];
-          return CoinTile(coin: coin);
-        },
+      body: RefreshIndicator(
+        onRefresh: _handleRefresh,
+        child: (_coinsList == null)
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.separated(
+                itemCount: _coinsList!.length,
+                separatorBuilder: (context, index) => const Divider(),
+                itemBuilder: (context, i) {
+                  final coin = _coinsList![i];
+                  return CoinTile(coin: coin);
+                },
+              ),
       ),
     );
   }
@@ -48,4 +51,9 @@ class _CoinListScreenState extends State<CoinListScreen> {
     _coinsList = await CryptoCoinsRepository().getCoinsList();
     setState(() {});
   }
+
+  Future<void> _handleRefresh() async {
+    await _loadCryptoCoins();
+  }
+
 }

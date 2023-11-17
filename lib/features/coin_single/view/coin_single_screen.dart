@@ -30,6 +30,9 @@ class _CoinSingleScreenState extends State<CoinSingleScreen> {
     coinDetails = await CryptoCoinsRepository().getCoin(coinName!);
     setState(() {});
   }
+    Future<void> _handleRefresh() async {
+    await _loadCoin();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,6 +99,11 @@ class _CoinSingleScreenState extends State<CoinSingleScreen> {
                   ),
                 ],
               ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _handleRefresh,
+        tooltip: 'Refresh',
+        child: const Icon(Icons.refresh),
       ),
     );
   }
