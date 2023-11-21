@@ -1,8 +1,8 @@
+import 'package:coins_list/repositories/coins/coins.dart';
 import 'package:flutter/material.dart';
 
 import 'package:coins_list/features/coin_list/widgets/widgets.dart';
-import 'package:coins_list/repositories/coins/models/short_coin.dart';
-import 'package:coins_list/repositories/coins/coins_repository.dart';
+import 'package:get_it/get_it.dart';
 
 
 
@@ -48,7 +48,7 @@ class _CoinListScreenState extends State<CoinListScreen> {
     );
   }
   Future<void> _loadCryptoCoins() async {
-    _coinsList = await CryptoCoinsRepository().getCoinsList();
+    _coinsList = await GetIt.I<AbstractCoinRepository>().getCoinsList();
     setState(() {});
   }
 

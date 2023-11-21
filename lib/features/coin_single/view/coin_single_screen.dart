@@ -1,7 +1,7 @@
+import 'package:coins_list/repositories/coins/coins.dart';
 import 'package:flutter/material.dart';
-import 'package:coins_list/repositories/coins/models/coin.dart';
-import 'package:coins_list/features/coin_single/widgets/base_card.dart';
-import 'package:coins_list/repositories/coins/coins_repository.dart';
+import 'package:coins_list/features/coin_single/widgets/widgets.dart';
+import 'package:get_it/get_it.dart';
 
 
 
@@ -27,7 +27,7 @@ class _CoinSingleScreenState extends State<CoinSingleScreen> {
   }
 
   Future<void> _loadCoin() async {
-    coinDetails = await CryptoCoinsRepository().getCoin(coinName!);
+    coinDetails = await GetIt.I<AbstractCoinRepository>().getCoin(coinName!);
     setState(() {});
   }
     Future<void> _handleRefresh() async {
@@ -101,6 +101,7 @@ class _CoinSingleScreenState extends State<CoinSingleScreen> {
               ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
         onPressed: _handleRefresh,
         tooltip: 'Refresh',
         child: const Icon(Icons.refresh),
