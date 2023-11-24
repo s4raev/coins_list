@@ -101,7 +101,6 @@ class _CoinSingleScreenState extends State<CoinSingleScreen> {
               ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white,
         onPressed: _handleRefresh,
         tooltip: 'Refresh',
         child: const Icon(Icons.refresh),
