@@ -37,7 +37,12 @@ class _CoinSingleScreenState extends State<CoinSingleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () { Navigator.of(context).pushNamed('/'); }
+        ),
+      ),
       body: (coinDetails == null)
       ? const Center(child: CircularProgressIndicator())
       : Center(
