@@ -1,3 +1,4 @@
+import 'package:coins_list/generated/l10n.dart';
 import 'package:coins_list/repositories/coins/coins.dart';
 import 'package:flutter/material.dart';
 import 'package:coins_list/features/coin_single/widgets/widgets.dart';
@@ -77,26 +78,26 @@ class _CoinSingleScreenState extends State<CoinSingleScreen> {
                   BaseCard(
                     child: Column(
                       children: [
-                        const Text(
-                          '24 hours stats',
-                          style: TextStyle(
+                          Text(
+                          S.of(context).stats,
+                          style: const TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.w600,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                         const SizedBox(height: 8),
                           _DataRow(
-                          title: 'volume',
+                          title: S.of(context).volume,
                           value: '${coinDetails!.volume24Hour.toStringAsFixed(2)} \$',
                         ),
                         const SizedBox(height: 6),
                         _DataRow(
-                          title: 'Hight',
+                          title: S.of(context).hight,
                           value: '${coinDetails!.low24Hour.toStringAsFixed(2)} \$',
                         ),
                         const SizedBox(height: 6),
                         _DataRow(
-                          title: 'Low',
+                          title: S.of(context).low,
                           value: '${coinDetails!.hight24Hour.toStringAsFixed(2)} \$',
                         ),
                       ],
